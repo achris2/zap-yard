@@ -13,7 +13,7 @@ export default function Navbar() {
                   <Image
                       src={DesktopLogo}
                       alt="Zap Yard Logo"
-                      className="w-8 hidden lg:block"
+                      className="max-w-40 hidden lg:block"
                   />
                   
                   <Image
