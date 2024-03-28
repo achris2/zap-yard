@@ -1,5 +1,5 @@
 import { MenuIcon } from "lucide-react";
-import { DropdownMenu, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import AnonUserImg from '../public/anonuser.webp';
 import React from 'react';
 import Image from "next/image";
@@ -16,6 +16,10 @@ export default function UserNav() {
                   />
               </div>
           </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-[200px]">
+              <DropdownMenuItem>Register</DropdownMenuItem>
+              <DropdownMenuItem>Login</DropdownMenuItem>
+          </DropdownMenuContent>
     </DropdownMenu>
   )
 }
