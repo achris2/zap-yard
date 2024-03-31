@@ -5,10 +5,14 @@ import React from 'react';
 import {RegisterLink, LoginLink, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
+import { CreateListing } from "@/app/actions";
 
 export default async function UserNav() {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
+    const createListingWithId = CreateListing.bind(null, {
+        userId: user?.id as string, 
+    });
   return (
       <DropdownMenu>
           <DropdownMenuTrigger>
@@ -25,7 +29,7 @@ export default async function UserNav() {
               {user ? (
                   <>
                       <DropdownMenuItem>
-                          <form className="w-full">
+                          <form action={createListingWithId} className="w-full">
                               <button type="submit" className="w-full text-start">
                                   List Your Charger
                               </button>
