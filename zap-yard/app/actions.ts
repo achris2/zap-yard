@@ -20,6 +20,8 @@ export async function CreateListing({userId}: {userId: string}) {
             },
         });
 
-        return redirect(`/create/${data.id}/structure`)
-    } else if (!data.addedCategory && !)
+        return redirect(`/create/${data.id}/structure`);
+    } else if (!data.addedCategory && !data.addedDescription && !data.addedLocation) {
+        return redirect(`/create/${data.id}/structure`);
+    }
 }
