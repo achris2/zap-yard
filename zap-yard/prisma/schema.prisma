@@ -28,6 +28,7 @@ model Location {
   id String @id @default(uuid())
 
   title String?
+  categoryName String?
   description String?
   location String?
   photo String?
