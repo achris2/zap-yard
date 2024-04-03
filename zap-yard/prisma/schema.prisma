@@ -30,9 +30,11 @@ model Location {
   title String?
   categoryName String?
   description String?
-  location String?
+  address String?
+  country String?
   photo String?
   price Int?
+  chargerquantity Int?
 
   addedCategory Boolean @default(false)
   addedDescription Boolean @default(false)

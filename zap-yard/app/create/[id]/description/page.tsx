@@ -1,3 +1,4 @@
+import { CreateDescription } from '@/app/actions';
 import { Counter } from '@/components/counter'
 import { ListingFooter } from '@/components/listingFooter';
 import { Card, CardHeader } from '@/components/ui/card'
@@ -6,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea'
 import React from 'react'
 
-export default function DescriptionPage() {
+export default function DescriptionPage({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="w-3/5 mx-auto">
@@ -14,7 +15,8 @@ export default function DescriptionPage() {
           List your charging location and start earning today
         </h2>
       </div>
-      <form>
+      <form action={CreateDescription}>
+        <input type="hidden" name="locationId" value={params.id}/>
         <div className="mx-auto w-3/5 mt-10 flex flex-col gap-y-5 mb-36">
           <div className="flex flex-col gap-y-2">
             <Label>Title</Label>
