@@ -1,6 +1,6 @@
 "use client"
 
-import { CreateLocation } from "@/app/actions";
+import { createLocation } from "@/app/actions";
 import { useCountries } from "@/app/lib/getcountries";
 import { ListingFooter } from "@/components/listingFooter";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -21,24 +21,23 @@ export default function AddressRoute({ params }: { params: { id: string } }) {
             <div className="w-3/5 mx-auto">
                 <h2 className="text-3xl font-semibold tracking-tight transition-colors mb-10">
                     Where is your charger located?
-               </h2>
+                </h2>
             </div>
-            <form action={CreateLocation}>
+            <form action={createLocation}>
                 <input type="hidden" name="locationId" value={params.id} />
-                <input type="hidden" name="countryValue" value={locationValue}/>
+                <input type="hidden" name="countryValue" value={locationValue} />
                 <div className="w-3/5 mx-auto mb-36">
                     <div className="mb-5">
-                        <Select required onValueChange={(value)=> setLocationValue(value)}>
+                        <Select required onValueChange={(value) => setLocationValue(value)}>
                             <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select a City"/>
+                                <SelectValue placeholder="Select a City" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>Countries
-                                    </SelectLabel>
+                                    <SelectLabel>Countries</SelectLabel>
                                     {getAllCountries().map((item) => (
                                         <SelectItem key={item.value} value={item.value}>
-                                            {item.flag}{item.label} 
+                                            {item.flag}{item.label}
                                         </SelectItem>
                                     )
                                     )}
@@ -46,11 +45,11 @@ export default function AddressRoute({ params }: { params: { id: string } }) {
                             </SelectContent>
                         </Select>
                     </div>
-                    <LazyMap locationValue={locationValue} /> 
+                    <LazyMap locationValue={locationValue} />
                 </div>
-                
-            </form>
-            <ListingFooter/> 
+
+                <ListingFooter />
+                </form>
         </>
-    )
+    );
 }
