@@ -36,7 +36,8 @@ export async function CreateListing({ userId }: { userId: string }) {
             data: {
                 userId: userId,
             },
-        });
+        })
+        return redirect(`/`);
     }
 }
 
