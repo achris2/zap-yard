@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import prisma from "./lib/db";
 import { supabase } from "./lib/supabase";
+import { revalidatePath } from "next/cache";
 
 export async function CreateListing({ userId }: { userId: string }) {
     const data = await prisma.location.findFirst({
@@ -101,4 +102,35 @@ export async function createLocation(formData: FormData) {
         
     });
     return redirect(`/create/${locationId}/address`);
+}
+
+export async function AddToFavourites(formData: FormData) {
+    const locationId = formData.get("locationId") as string;
+    const userId = formData.get("userId") as string;
+    const pathName = formData.get("pathName") as string;
+
+    const data = await prisma.favourite.create({
+        data: {
+            locationId: locationId,
+            userId: userId, 
+        }, 
+    });
+
+    revalidatePath(pathName);
+} 
+
+export async function RemoveFromFavourites(formData: FormData) { 
+
+    const favouriteId = formData.get('favouriteId') as string; 
+    const pathName = formData.get("pathName") as string;
+    const userId = formData.get("userId") as string;
+
+    const data = await prisma.favourite.delete({
+        where: {
+            id: favouriteId,
+            userId: userId,
+        },
+    });
+
+    revalidatePath(pathName);
 }

@@ -77,6 +77,11 @@ async function ShowItems({
                 imagePath={item.photo as string}
                 location={item.country as string}
                 price={item.price as number}
+                userId={user?.id}
+                favouriteId={item.Favourite[0]?.id}
+                isInFavouriteList={item.Favourite.length > 0 ? true : false}
+                locationId={item.id}
+                pathName="/"
               />
             ))} 
           </div>
