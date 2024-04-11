@@ -9,8 +9,11 @@ interface iAppProps{
     description: string;
     location: string;
     price: number; 
+    userId: string | undefined; 
+
 };
-export function ListingCard({ imagePath, description, location, price }: iAppProps) {
+
+export function ListingCard({ imagePath, description, location, price, userId }: iAppProps) {
     const { getCountryByValue } = useCountries(); 
     const country = getCountryByValue(location); 
   return (
@@ -20,7 +23,12 @@ export function ListingCard({ imagePath, description, location, price }: iAppPro
                   src={`https://imnaypnzvatjbonhywqy.supabase.co/storage/v1/object/public/images/${imagePath}`}
                   alt="Photo of Charger"
                   fill
-                  className="rounded-lg h-full object-cover" />
+                  className="rounded-lg h-full object-cover"
+              />
+              {userId && (
+                  <div>
+                  <p>Testing</p>
+              </div>)}
           </div>
           <Link href={"/"} className="mt-3">
               <h3 className="font-medium text-base">

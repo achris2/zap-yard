@@ -22,6 +22,7 @@ model User {
   lastName String
   profileImage String?
   Location Location[]
+  Favourite Favourite[]
 }
 
 model Location {
@@ -35,6 +36,7 @@ model Location {
   photo String?
   price Int?
   chargerquantity Int?
+  Favourite Favourite[]
 
   addedCategory Boolean @default(false) 
   addedDescription Boolean @default(false)
@@ -43,4 +45,16 @@ model Location {
   createdAT DateTime @default(now())
   User User? @relation(fields: [userId], references: [id])
   userId String?
+}
+
+model Favourite {
+  id String @id @default(uuid())
+
+  User User? @relation(fields:[userId], references: [id])
+  userId String? 
+  Location Location? @relation(fields: [locationId], references: [id])
+  locationId String? 
+
+  createdAt DateTime @default(now())
+
 }
