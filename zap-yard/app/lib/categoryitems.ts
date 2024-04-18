@@ -7,6 +7,7 @@ interface iAppProps {
     icon: React.ElementType;
     description: string;
     id: number;
+    imageUrl: string;
   }
   
 export const categoryItems: iAppProps[] = [
@@ -15,7 +16,8 @@ export const categoryItems: iAppProps[] = [
     name: "fastcharge",
     description: "Fast Chargers",
     title: "Fast Charge",
-    icon: Zap,  
+    icon: Zap,
+    imageUrl: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
     },
     {
       id: 1,
@@ -23,6 +25,7 @@ export const categoryItems: iAppProps[] = [
       description: "Overnight charge",
       title: "Overnight",
       icon: Unplug,
+      imageUrl: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
     },
     {
       id: 2,
@@ -30,6 +33,7 @@ export const categoryItems: iAppProps[] = [
       description: "24/7",
       title: "24/7",
       icon: Clock12, 
+      imageUrl: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
     },
     {
       id: 3,
@@ -37,6 +41,7 @@ export const categoryItems: iAppProps[] = [
       description: "Chargers near tea/coffee facilities",
       title: "Tea Break",
       icon: Coffee, 
+      imageUrl: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
     },
     {
       id: 4,
@@ -44,5 +49,6 @@ export const categoryItems: iAppProps[] = [
       description: "Chargers in major routes",
       title: "Major Road",
       icon: ArrowDownUp, 
+      imageUrl: "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
     },
   ];

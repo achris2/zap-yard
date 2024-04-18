@@ -12,6 +12,11 @@ const nextConfig = {
                 protocol: "https", 
                 port: "", 
             },
+            {
+                hostname: "t3.ftcdn.net",
+                protocol: "https", 
+                port: "", 
+            },
         ]
     }
 };
