@@ -50,28 +50,47 @@ export function AddToFavouriteButton() {
 
 export function DeleteFromFavourites() {
     const { pending } = useFormStatus();
-  return (
-    <>
-    {pending ? (
-        <Button
-            variant="outline"
-            size="icon"
-            disabled
-            className="bg-primary-foreground"
-        >
-            <Loader2 className="h-4 w-4 animate-spin" />
-        </Button>
-    ) : (
-            <Button
-                variant="outline"
-                size="icon"
-                className="bg-primary-foreground"
-                type="submit"
-            >
-            <Heart className="h-4 w-4" fill="#E21C49"/>
-        </Button >
-    )
-    }
-    </>
-  )
+    return (
+        <>
+            {pending ? (
+                <Button
+                    variant="outline"
+                    size="icon"
+                    disabled
+                    className="bg-primary-foreground"
+                >
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                </Button>
+            ) : (
+                <Button
+                    variant="outline"
+                    size="icon"
+                    className="bg-primary-foreground"
+                    type="submit"
+                >
+                    <Heart className="h-4 w-4" fill="#E21C49" />
+                </Button >
+            )
+            }
+        </>
+    ); 
+}
+
+
+export function ReservationSubmitButton() {
+    const { pending } = useFormStatus();
+    return (
+        <>
+            {pending ? (
+                <Button className="w-full" type="submit">
+                    <Loader2 className="w-4 h-4 animate-spin mr-2"/> Creating reservation. Please wait. 
+                </Button>
+            ) : (
+                <Button className="w-full" type="submit">
+                Reserve now
+                </Button>
+            )
+            }
+        </>
+    );
 }

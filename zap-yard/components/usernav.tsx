@@ -46,8 +46,8 @@ export default async function UserNav() {
                           </Link>      
                     </DropdownMenuItem>  
                     <DropdownMenuItem>
-                          <Link href="/my-listings">
-                              My Listings
+                          <Link href="/my-reservations">
+                              My Reservations
                           </Link>      
                     </DropdownMenuItem>
                     

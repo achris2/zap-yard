@@ -1,11 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import { CreateReservation } from "@/app/actions";
 import prisma from "@/app/lib/db"; 
 import { useCountries } from "@/app/lib/getcountries";
 import { BookingCalendar } from "@/components/bookingcalendar";
 import { ShowCategory } from "@/components/showcategory";
 import { ShowMap } from "@/components/showmap";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
+import Link from "next/link";
 
 
 async function getData(locationId: string) {
@@ -22,13 +26,18 @@ async function getData(locationId: string) {
             id: true,
             title: true,
             chargerquantity: true,
+            Reservation: {
+                where: {
+                    locationId: locationId,
+                }
+            }, 
             User: {
                 select: {
                     profileImage: true,
                     firstName: true, 
                     
                 }
-            }
+            },
         },
     }); 
     return data;
@@ -39,6 +48,8 @@ export default async function ListingRoute({params}: {params: {id : string}}) {
     const data = await getData(params.id);
     const { getCountryByValue } = useCountries(); 
     const country = getCountryByValue(data?.country as string);
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
   return (
       <div className="w-[75%] mx-auto mt-10 mb-12">
           <h1 className="font-medium text-2xl mb-5">{data?.title}</h1>
@@ -84,9 +95,21 @@ export default async function ListingRoute({params}: {params: {id : string}}) {
                   <ShowMap locationValue={country?.value as string} />
               
               </div>
-              
-              <BookingCalendar />
-          
+              <form action={CreateReservation}>
+                  <input type="hidden" name="locationId" value={params.id} />
+                  <input type="hidden" name="userId" value={user?.id} />
+                  <BookingCalendar reservation={data?.Reservation}/>
+                  {user?.id ? (
+                      <Button className="w-full" type="submit">
+                          Reserve now
+                      </Button>
+                  ) : (
+                          <Button className="w-full" asChild>
+                              <Link href="/api/auth/login">Reserve now
+                              </Link>
+                          </Button>
+                  ) }
+              </form>
           </div>
           </div>
   )
