@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { Skeleton } from "./ui/skeleton"
 
-export function ShowMap(locationValue: string) {
+export function ShowMap({ locationValue }: { locationValue : string }) {
     const LazyMap = dynamic(
         () => import('@/components/map'),
         {

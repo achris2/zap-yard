@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import prisma from "@/app/lib/db"; 
 import { useCountries } from "@/app/lib/getcountries";
+import { BookingCalendar } from "@/components/bookingcalendar";
 import { ShowCategory } from "@/components/showcategory";
+import { ShowMap } from "@/components/showmap";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
@@ -68,6 +70,7 @@ export default async function ListingRoute({params}: {params: {id : string}}) {
                           <h3 className="font-medium">ZapYard by {data?.User?.firstName}</h3>
                           </div>
                   </div>
+
                   <Separator className="my-7" />
                   
                   <ShowCategory categoryName={data?.categoryName as string} />
@@ -77,10 +80,14 @@ export default async function ListingRoute({params}: {params: {id : string}}) {
                   <p className="text-muted-foreground">{data?.description}</p>
                   
                   <Separator className="my-7" />
-              
+
+                  <ShowMap locationValue={country?.value as string} />
               
               </div>
-              </div>
+              
+              <BookingCalendar />
+          
+          </div>
           </div>
   )
 }

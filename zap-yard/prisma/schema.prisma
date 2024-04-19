@@ -23,6 +23,7 @@ model User {
   profileImage String?
   Location Location[]
   Favourite Favourite[]
+  Reservation Reservation[]
 }
 
 model Location {
@@ -37,6 +38,7 @@ model Location {
   price Int?
   chargerquantity Int?
   Favourite Favourite[]
+  Reservation Reservation[]
 
   addedCategory Boolean @default(false) 
   addedDescription Boolean @default(false)
@@ -57,4 +59,17 @@ model Favourite {
 
   createdAt DateTime @default(now())
 
+}
+
+model Reservation {
+  id String @id @default(uuid())
+
+  startDate DateTime 
+  endDate DateTime
+  createdAt DateTime @default(now())
+
+  User User? @relation(fields: [userId], references: [id])
+  userId String?
+  Location Location? @relation(fields: [locationId], references: [id])
+  locationId String?
 }
