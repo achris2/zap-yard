@@ -36,7 +36,7 @@ model Location {
   country String?
   photo String?
   price Int?
-  chargerquantity Int?
+  chargerquantity String?
   Favourite Favourite[]
   Reservation Reservation[]
 

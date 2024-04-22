@@ -13,7 +13,7 @@ async function getData({
     searchParams?: {
       filter?: string;
       country?: string;
-      numberOfChargers?: number;
+      numberOfChargers?: string;
   };
 }) {
   const data = await prisma.location.findMany({
@@ -22,6 +22,8 @@ async function getData({
       addedLocation: true,
       addedDescription: true,
       categoryName: searchParams?.filter ?? undefined, 
+      country: searchParams?.country ?? undefined, 
+      chargerquantity: searchParams?.numberOfChargers ?? undefined, 
     },
     select: {
       photo: true, 
@@ -39,13 +41,13 @@ async function getData({
   return data; 
 }
 
-export default function Home({
+export default function Location({
   searchParams,
 }: {
   searchParams?: {
     filter?: string;
     country?: string;
-    numberOfChargers?: number;
+    numberOfChargers?: string;
   };
 }) {
   return (
@@ -66,7 +68,7 @@ async function ShowItems({
   searchParams?: {
     filter?: string;
     country?: string;
-    numberOfChargers?: number;
+    numberOfChargers?: string;
   };
   }) {
   const { getUser } = getKindeServerSession();
