@@ -12,6 +12,8 @@ async function getData({
     userId: string | undefined; 
     searchParams?: {
       filter?: string;
+      country?: string;
+      numberOfChargers?: number;
   };
 }) {
   const data = await prisma.location.findMany({
@@ -42,6 +44,8 @@ export default function Home({
 }: {
   searchParams?: {
     filter?: string;
+    country?: string;
+    numberOfChargers?: number;
   };
 }) {
   return (
@@ -61,6 +65,8 @@ async function ShowItems({
 }: {
   searchParams?: {
     filter?: string;
+    country?: string;
+    numberOfChargers?: number;
   };
   }) {
   const { getUser } = getKindeServerSession();

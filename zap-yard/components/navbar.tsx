@@ -4,6 +4,7 @@ import React from 'react';
 import DesktopLogo from '../public/zapyard-desktoplogo.png';
 import MobileLogo from '../public/zapyard-symbol.png';
 import UserNav from './usernav';
+import { SearchComponent } from './searchcomponent';
 
 export default function Navbar() {
   return (
@@ -22,10 +23,9 @@ export default function Navbar() {
                         className="block lg:hidden w-20"
                   /> 
               </Link>
-              <div className="rounded-full border px-5 py-2">
-                  <h1>Search Bar</h1>
-              </div>
-              <UserNav></UserNav>
+              <SearchComponent />
+              <UserNav>
+              </UserNav>
           </div>
       </nav>
   )

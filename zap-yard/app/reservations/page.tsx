@@ -44,7 +44,7 @@ export default async function ReservationRoute() {
         </h2>
 
         {data.length === 0 ? (
-            <NoItems title="You do not have any reservations" description="Reserve a Zap Yard and start charging today"/>
+            <NoItems title="You do not have any reservations." description="Reserve a Zap Yard to get started."/>
         ) : (
                 <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8">
                     {data.map((item) => (
@@ -57,7 +57,7 @@ export default async function ReservationRoute() {
                             imagePath={item.Location?.photo as string}
                             price={item.Location?.price as number}
                             userId={user.id}
-                            favouriteId={item.Location?.Favourite[0].id as string}
+                            favouriteId={item.Location?.Favourite[0]?.id as string}
                             isInFavouriteList={item.Location?.Favourite.length as number > 0 ? true : false}
 
                         />

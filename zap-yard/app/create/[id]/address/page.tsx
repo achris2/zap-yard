@@ -30,7 +30,7 @@ export default function AddressRoute({ params }: { params: { id: string } }) {
                     <div className="mb-5">
                         <Select required onValueChange={(value) => setLocationValue(value)}>
                             <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select a City" />
+                                <SelectValue placeholder="Select a Country" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
