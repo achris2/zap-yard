@@ -23,7 +23,7 @@ export function SelectCategory() {
                     >
                         <CardHeader>
                             <Image
-                                src={item.icon}
+                                src={item.imageUrl}
                                 alt={item.description}
                                 height={32}
                                 width={32}
