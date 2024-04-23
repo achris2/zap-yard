@@ -80,7 +80,7 @@ export async function CreateListing({ userId }: { userId: string }) {
                 title: title,
                 description: description,
                 price: Number(price),
-                chargerquantity: Number(noOfChargers),
+                chargerquantity: noOfChargers,
                 photo: imageData?.path,
                 addedDescription: true,
             }

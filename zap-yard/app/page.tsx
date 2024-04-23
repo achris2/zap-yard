@@ -5,9 +5,10 @@ import { Suspense } from "react";
 import SkeletonCard from "@/components/skeletoncard";
 import { NoItems } from "@/components/noitems";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 async function getData({
   searchParams,
-  userId
+  userId, 
 }: {
     userId: string | undefined; 
     searchParams?: {
@@ -15,7 +16,8 @@ async function getData({
       country?: string;
       numberOfChargers?: string;
   };
-}) {
+  }) {
+  noStore();
   const data = await prisma.location.findMany({
     where: {
       addedCategory: true,
